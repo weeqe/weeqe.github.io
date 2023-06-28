@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="ReactReactElementReactElement 是一个纯粹的 JavaScript对象，它有type属性，表示元素的类型，可以是一个HTML的标签名，也可以是一个React组件，还有 props属性，表示元素的属性和元素信息等，例如：className,style,onClick等。还有children 属性，表示它的子元素，可能是一个文本节点或者一个&#x2F;多个 ReactElement。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react">
+<meta property="og:url" content="http://example.com/2023/06/11/react/index.html">
+<meta property="og:site_name" content="weeqe">
+<meta property="og:description" content="ReactReactElementReactElement 是一个纯粹的 JavaScript对象，它有type属性，表示元素的类型，可以是一个HTML的标签名，也可以是一个React组件，还有 props属性，表示元素的属性和元素信息等，例如：className,style,onClick等。还有children 属性，表示它的子元素，可能是一个文本节点或者一个&#x2F;多个 ReactElement。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/weeqe/images/main/jsx.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/weeqe/images/main/fiber.png">
+<meta property="article:published_time" content="2023-06-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-06-28T09:06:14.222Z">
+<meta property="article:author" content="weeqe">
+<meta property="article:tag" content="react">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/weeqe/images/main/jsx.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>react</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/03/30/ts/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/06/11/react/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/06/11/react/&text=react"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/06/11/react/&title=react"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/06/11/react/&is_video=false&description=react"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=react&body=Check out this article: http://example.com/2023/06/11/react/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/06/11/react/&title=react"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/06/11/react/&title=react"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/06/11/react/&title=react"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/06/11/react/&title=react"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/06/11/react/&name=react&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/06/11/react/&t=react"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#React"><span class="toc-number">1.</span> <span class="toc-text">React</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ReactElement"><span class="toc-number">1.1.</span> <span class="toc-text">ReactElement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fiber"><span class="toc-number">1.2.</span> <span class="toc-text">Fiber</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFFiber"><span class="toc-number">1.2.1.</span> <span class="toc-text">什么是Fiber</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fiber%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.2.2.</span> <span class="toc-text">Fiber的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BC%95%E5%85%A5Fiber"><span class="toc-number">1.2.3.</span> <span class="toc-text">为什么引入Fiber</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReactElement-%E5%92%8C-Fiber-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.4.</span> <span class="toc-text">ReactElement 和 Fiber 的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.</span> <span class="toc-text">简单实现</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        react
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">weeqe</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-06-10T16:00:00.000Z" itemprop="datePublished">2023-06-11</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/react/" rel="tag">react</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="React"><a href="#React" class="headerlink" title="React"></a>React</h1><h2 id="ReactElement"><a href="#ReactElement" class="headerlink" title="ReactElement"></a>ReactElement</h2><p>ReactElement 是一个纯粹的 JavaScript对象，它有<code>type</code>属性，表示元素的类型，可以是一个HTML的标签名，也可以是一个React组件，还有 <code>props</code>属性，表示元素的属性和元素信息等，例如：className,style,onClick等。还有<code>children</code> 属性，表示它的子元素，可能是一个文本节点或者一个/多个 ReactElement。在渲染过程中，React 会根据 ReactElement 的类型和属性来创建真实的 DOM 元素或者调用相应的组件类进行渲染。</p>
+<p>在 React 应用中，我们通常通过 JSX 语法来创建 ReactElement。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;my-class&quot;</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/weeqe/images/main/jsx.png"></p>
+<p>在这个例子中 <code>div</code> 标签和他的属性以及子元素就被表示为一个 ReactElement</p>
+<p>ReactElement 的实现原理比较简单。在 JSX 语法中，React 会将标签转换为 ReactElement，然后将它们构建成一个树形结构，这个树形结构也被称为 React 的虚拟 DOM。在 React 应用中，当需要更新 UI 时，React 会比较新旧虚拟 DOM 的差异，然后将差异应用到真实的 DOM 上，从而实现高效的 UI 更新。</p>
+<h2 id="Fiber"><a href="#Fiber" class="headerlink" title="Fiber"></a>Fiber</h2><h3 id="什么是Fiber"><a href="#什么是Fiber" class="headerlink" title="什么是Fiber"></a>什么是Fiber</h3><p>Fiber 是React16引入的一种新的协调机制，它是React内部的一种<strong>数据结构</strong>，用来管理组件的更新流程。Fiber通过链表的方式表示组件树，并且用于在多个渲染帧之间分割工作，以实现增量渲染和优先级调度。</p>
+<h3 id="Fiber的特点"><a href="#Fiber的特点" class="headerlink" title="Fiber的特点"></a>Fiber的特点</h3><ul>
+<li>虚拟Dom: Fiber节点表示组件树种的一个虚拟节点，保存了该节点的信息，如类型，属性，子节点，alternate 等</li>
+<li>工作单元：每个Fiber节点都代表了React的一个工作单元，React通过遍历Fiber树来执行这些工作单元，实现组件的渲染和更新</li>
+<li>协调和调度：Fiber使用一种协调算法，可以中断，暂停和恢复渲染过程，以便更好的响应用户交互和优化性能</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiber.new.js#L117">Fiber的节点和属性定义</a></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">FiberNode</span>(<span class="params"></span></span><br><span class="line"><span class="params">  tag: WorkTag,</span></span><br><span class="line"><span class="params">  pendingProps: mixed,</span></span><br><span class="line"><span class="params">  key: <span class="literal">null</span> | <span class="built_in">string</span>,</span></span><br><span class="line"><span class="params">  mode: TypeOfMode,</span></span><br><span class="line"><span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 静态数据结构属性</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">tag</span> = tag</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">key</span> = key</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">elementType</span> = <span class="literal">null</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">type</span> = <span class="literal">null</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">stateNode</span> = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 用于连接其他Fiber节点形成Fiber树</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">return</span> = <span class="literal">null</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">child</span> = <span class="literal">null</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">sibling</span> = <span class="literal">null</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">index</span> = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">ref</span> = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 指向上一次更新时对应的fiber</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">alternate</span> = <span class="literal">null</span></span><br><span class="line">  <span class="comment">// 其他的属性...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>world<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这个jsx结构对应的fiber节点为：</p>
+<p><img src="https://raw.githubusercontent.com/weeqe/images/main/fiber.png"></p>
+<p>这种数据结构使得处理fiber的时候查找下一个工作单元会变得更加容易</p>
+<h3 id="为什么引入Fiber"><a href="#为什么引入Fiber" class="headerlink" title="为什么引入Fiber"></a>为什么引入Fiber</h3><p>Fiber的引入主要是为了解决 React 中的两个问题：递归调用和同步渲染。 在React15之前，组件的更新过程都是通过递归调用来实现的，这样会导致调用栈过深，而且无法中断和恢复，对于用户的体验影响很大。而在React16中，Fiber将组件的更新过程改为了循环调用，这样可以实现中断和恢复，同时也更加灵活可控。</p>
+<p>具体来说，当组件需要更新时，React 会创建一个新的 Fiber 树，通过遍历新旧 Fiber 树的差异，将需要更新的节点打上标记，然后再根据标记来执行实际的更新操作。这种方式可以在不阻塞主线程的情况下，按优先级和时间分片的方式更新 UI，从而提高性能和用户体验。</p>
+<h3 id="ReactElement-和-Fiber-的区别"><a href="#ReactElement-和-Fiber-的区别" class="headerlink" title="ReactElement 和 Fiber 的区别"></a>ReactElement 和 Fiber 的区别</h3><ol>
+<li>概念层级不同：ReactElement是描述组件的虚拟元素，而Fiber是实现React调度和渲染的数据结构</li>
+<li>可变性不同：ReactElement是不可变的，一旦创建就不能更改。而Fiber是可以在运行时更改和调度的</li>
+<li>目标不同：ReactElement的目标是描述组件的结构和渲染方式，而Fiber的目标是实现高效的渲染和协调机制</li>
+<li>应用场景不同：ReactElement适用于静态的、不会频繁变化的组件结构描述；而Fiber适用于处理复杂、大型组件树以及实现增量渲染和优先级调度等场景。</li>
+</ol>
+<h2 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">createElement</span>(<span class="params">type, props, ...children</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        type,</span><br><span class="line">        <span class="attr">props</span>: &#123;</span><br><span class="line">            ...props,</span><br><span class="line">            <span class="attr">children</span>: children.<span class="title function_">map</span>(<span class="function"><span class="params">child</span> =&gt;</span></span><br><span class="line">                <span class="keyword">typeof</span> child === <span class="string">&quot;object&quot;</span></span><br><span class="line">                    ? child</span><br><span class="line">                    : <span class="title function_">createTextElement</span>(child)</span><br><span class="line">            ),</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createTextElement</span>(<span class="params">text</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;TEXT_ELEMENT&quot;</span>,</span><br><span class="line">        <span class="attr">props</span>: &#123;</span><br><span class="line">            <span class="attr">nodeValue</span>: text,</span><br><span class="line">            <span class="attr">children</span>: [],</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> nextUnitOfWork = <span class="literal">null</span></span><br><span class="line"><span class="keyword">let</span> wipRoot = <span class="literal">null</span></span><br><span class="line"><span class="keyword">let</span> currentRoot = <span class="literal">null</span> <span class="comment">// commitRoot 提交完成后保存当前fiber树的引用</span></span><br><span class="line"><span class="keyword">let</span> deletions = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">render</span>(<span class="params">element, container</span>) &#123;</span><br><span class="line">    wipRoot = &#123;</span><br><span class="line">        <span class="attr">dom</span>: container,</span><br><span class="line">        <span class="attr">props</span>: &#123;</span><br><span class="line">            <span class="attr">children</span>: [element]</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">alternate</span>: currentRoot <span class="comment">// 指向旧的 fiber 树，即上一次提交到 DOM 的fiber</span></span><br><span class="line">    &#125;</span><br><span class="line">    deletions = []</span><br><span class="line">    nextUnitOfWork = wipRoot</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">workLoop</span>(<span class="params">deadline</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> shouldYield = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (nextUnitOfWork &amp;&amp; !shouldYield) &#123;</span><br><span class="line">        nextUnitOfWork = <span class="title function_">performUnitOfWork</span>(nextUnitOfWork)</span><br><span class="line">        shouldYield = deadline.<span class="title function_">timeRemaining</span>() &lt; <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 完成了所有的工作后 提交</span></span><br><span class="line">    <span class="keyword">if</span> (!nextUnitOfWork &amp;&amp; wipRoot) &#123;</span><br><span class="line">        <span class="title function_">commitRoot</span>()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">requestIdleCallback</span>(workLoop)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">requestIdleCallback</span>(workLoop)</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 将元素添加到dom</span></span><br><span class="line"><span class="comment"> * 为子元素创建fibers</span></span><br><span class="line"><span class="comment"> * 选择下一个工作单元</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">performUnitOfWork</span>(<span class="params">fiber</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!fiber.<span class="property">dom</span>) &#123;</span><br><span class="line">        fiber.<span class="property">dom</span> = <span class="title function_">createDom</span>(fiber)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 为每个子元素创建fiber</span></span><br><span class="line">    <span class="keyword">const</span> elements = fiber.<span class="property">props</span>.<span class="property">children</span></span><br><span class="line"></span><br><span class="line">    <span class="title function_">reconcilenChildren</span>(fiber, elements)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (fiber.<span class="property">child</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> fiber.<span class="property">child</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> nextFiber = fiber</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (nextFiber) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nextFiber.<span class="property">sibling</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> nextFiber.<span class="property">sibling</span></span><br><span class="line">        &#125;</span><br><span class="line">        nextFiber = nextFiber.<span class="property">parent</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 协调旧fiber 和 新元素</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">reconcilenChildren</span>(<span class="params">wipFiber, elements</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">0</span></span><br><span class="line">    <span class="comment">//  上次渲染的东西</span></span><br><span class="line">    <span class="keyword">let</span> oldFiber = wipFiber.<span class="property">alternate</span> &amp;&amp; wipFiber.<span class="property">alternate</span>.<span class="property">child</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> prevSibling = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (index &lt; elements.<span class="property">length</span> || oldFiber !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// 想要渲染到 DOM 的东西</span></span><br><span class="line">        <span class="keyword">const</span> element = elements[index]</span><br><span class="line">        <span class="keyword">let</span> newFiber = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 比较 oldFiber 和 element 看是否需要对DOM 进行修改</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> sameType = oldFiber &amp;&amp; element &amp;&amp; oldFiber.<span class="property">type</span> === element.<span class="property">type</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (sameType) &#123;</span><br><span class="line">            <span class="comment">// 更新node</span></span><br><span class="line">            newFiber = &#123;</span><br><span class="line">                <span class="attr">type</span>: oldFiber.<span class="property">type</span>,</span><br><span class="line">                <span class="attr">props</span>: element.<span class="property">props</span>,</span><br><span class="line">                <span class="attr">dom</span>: oldFiber.<span class="property">dom</span>,</span><br><span class="line">                <span class="attr">parent</span>: wipFiber,</span><br><span class="line">                <span class="attr">alternate</span>: oldFiber,</span><br><span class="line">                <span class="attr">effectTag</span>: <span class="string">&#x27;UPDATE&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (element &amp;&amp; !sameType) &#123;</span><br><span class="line">            <span class="comment">// 添加新节点</span></span><br><span class="line">            newFiber = &#123;</span><br><span class="line">                <span class="attr">type</span>: element.<span class="property">type</span>,</span><br><span class="line">                <span class="attr">props</span>: element.<span class="property">props</span>,</span><br><span class="line">                <span class="attr">dom</span>: <span class="literal">null</span>,</span><br><span class="line">                <span class="attr">parent</span>: wipFiber,</span><br><span class="line">                <span class="attr">alternate</span>: <span class="literal">null</span>,</span><br><span class="line">                <span class="attr">effectTag</span>: <span class="string">&#x27;PLACEMENT&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (oldFiber &amp;&amp; !sameType) &#123;</span><br><span class="line">            <span class="comment">// 删除oldFiber的 node</span></span><br><span class="line">            oldFiber.<span class="property">effectTag</span> = <span class="string">&#x27;DELETION&#x27;</span></span><br><span class="line">            deletions.<span class="title function_">push</span>(oldFiber)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (oldFiber) &#123;</span><br><span class="line">            oldFiber = oldFiber.<span class="property">sibling</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (index === <span class="number">0</span>) &#123;</span><br><span class="line">            wipFiber.<span class="property">child</span> = newFiber</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (element) &#123;</span><br><span class="line">            prevSibling.<span class="property">sibling</span> = newFiber</span><br><span class="line">        &#125;</span><br><span class="line">        prevSibling = newFiber</span><br><span class="line">        index++</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">commitRoot</span>(<span class="params"></span>) &#123;</span><br><span class="line">    deletions.<span class="title function_">forEach</span>(commitWork)</span><br><span class="line">    <span class="title function_">commitWork</span>(wipRoot.<span class="property">child</span>)</span><br><span class="line">    currentRoot = wipRoot</span><br><span class="line">    wipRoot = <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">commitWork</span>(<span class="params">fiber</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!fiber) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> domParent = fiber.<span class="property">parent</span>.<span class="property">dom</span></span><br><span class="line">    <span class="keyword">if</span> (fiber.<span class="property">effectTag</span> === <span class="string">&#x27;PLACEMENT&#x27;</span> &amp;&amp; fiber.<span class="property">dom</span> !== <span class="literal">null</span>) &#123;</span><br><span class="line">        domParent.<span class="title function_">appendChild</span>(fiber.<span class="property">dom</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (fiber.<span class="property">effectTag</span> === <span class="string">&#x27;UPDATE&#x27;</span> &amp;&amp; fiber.<span class="property">dom</span> !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="title function_">updateDom</span>(fiber.<span class="property">dom</span>, fiber.<span class="property">alternate</span>.<span class="property">props</span>, fiber.<span class="property">props</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (fiber.<span class="property">effectTag</span> === <span class="string">&#x27;DELETION&#x27;</span>) &#123;</span><br><span class="line">        domParent.<span class="title function_">removeChild</span>(fiber.<span class="property">dom</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    domParent.<span class="title function_">appendChild</span>(fiber.<span class="property">dom</span>)</span><br><span class="line">    <span class="title function_">commitWork</span>(fiber.<span class="property">child</span>)</span><br><span class="line">    <span class="title function_">commitWork</span>(fiber.<span class="property">sibling</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">isProperty</span> = key =&gt; key !== <span class="string">&#x27;children&#x27;</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">isNew</span> = (<span class="params">prev, next</span>) =&gt; <span class="function"><span class="params">key</span> =&gt;</span> prev[key] !== next[key]</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">isGone</span> = (<span class="params">prev, next</span>) =&gt; <span class="function"><span class="params">key</span> =&gt;</span> !(key <span class="keyword">in</span> next)</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">isEvent</span> = key =&gt; key.<span class="title function_">startsWith</span>(<span class="string">&#x27;on&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">updateDom</span>(<span class="params">dom, prevProps, nextProps</span>) &#123;</span><br><span class="line">    <span class="comment">// 删除旧的props</span></span><br><span class="line">    <span class="title class_">Object</span>.<span class="title function_">keys</span>(prevProps)</span><br><span class="line">        .<span class="title function_">filter</span>(isProperty)</span><br><span class="line">        .<span class="title function_">filter</span>(<span class="title function_">isGone</span>(prevProps, nextProps))</span><br><span class="line">        .<span class="title function_">forEach</span>(<span class="function"><span class="params">name</span> =&gt;</span> &#123;</span><br><span class="line">            dom[name] = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        &#125;)</span><br><span class="line">    <span class="comment">// 删除旧的事件</span></span><br><span class="line">    <span class="title class_">Object</span>.<span class="title function_">keys</span>(prevProps)</span><br><span class="line">        .<span class="title function_">filter</span>(isEvent)</span><br><span class="line">        .<span class="title function_">filter</span>(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span>  !(key <span class="keyword">in</span> nextProps) || <span class="title function_">isNew</span>(prevProps, nextProps)(key)</span><br><span class="line">        &#125;)</span><br><span class="line">        .<span class="title function_">forEach</span>(<span class="function"><span class="params">name</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> eventType = name.<span class="title function_">toLowerCase</span>().<span class="title function_">substring</span>(<span class="number">2</span>)</span><br><span class="line">            dom.<span class="title function_">removeEventListener</span>(eventType, prevProps[name])</span><br><span class="line">        &#125;)</span><br><span class="line">    <span class="comment">// 设置新的props</span></span><br><span class="line">    <span class="title class_">Object</span>.<span class="title function_">keys</span>(nextProps)</span><br><span class="line">        .<span class="title function_">filter</span>(isProperty)</span><br><span class="line">        .<span class="title function_">filter</span>(<span class="title function_">isNew</span>(prevProps, nextProps))</span><br><span class="line">        .<span class="title function_">forEach</span>(<span class="function"><span class="params">name</span> =&gt;</span> &#123;</span><br><span class="line">            dom[name] = nextProps[name]</span><br><span class="line">        &#125;)</span><br><span class="line">    <span class="comment">// 添加新的事件</span></span><br><span class="line">    <span class="title class_">Object</span>.<span class="title function_">keys</span>(nextProps)</span><br><span class="line">        .<span class="title function_">filter</span>(isEvent)</span><br><span class="line">        .<span class="title function_">filter</span>(<span class="title function_">isNew</span>(prevProps, nextProps))</span><br><span class="line">        .<span class="title function_">forEach</span>(<span class="function"><span class="params">name</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> eventType = name.<span class="title function_">toLowerCase</span>().<span class="title function_">substring</span>(<span class="number">2</span>)</span><br><span class="line">            dom.<span class="title function_">addEventListener</span>(eventType, nextProps[name])</span><br><span class="line">        &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#React"><span class="toc-number">1.</span> <span class="toc-text">React</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ReactElement"><span class="toc-number">1.1.</span> <span class="toc-text">ReactElement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fiber"><span class="toc-number">1.2.</span> <span class="toc-text">Fiber</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFFiber"><span class="toc-number">1.2.1.</span> <span class="toc-text">什么是Fiber</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fiber%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.2.2.</span> <span class="toc-text">Fiber的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BC%95%E5%85%A5Fiber"><span class="toc-number">1.2.3.</span> <span class="toc-text">为什么引入Fiber</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReactElement-%E5%92%8C-Fiber-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.4.</span> <span class="toc-text">ReactElement 和 Fiber 的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.</span> <span class="toc-text">简单实现</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/06/11/react/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/06/11/react/&text=react"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/06/11/react/&title=react"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/06/11/react/&is_video=false&description=react"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=react&body=Check out this article: http://example.com/2023/06/11/react/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/06/11/react/&title=react"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/06/11/react/&title=react"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/06/11/react/&title=react"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/06/11/react/&title=react"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/06/11/react/&name=react&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/06/11/react/&t=react"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    weeqe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

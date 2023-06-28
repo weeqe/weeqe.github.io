@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="TypeScript类型常用语法总结TypeScript 是一种带有静态类型的 JavaScript 扩展，它为 JavaScript 提供了类型注释、类型推断等功能，从而提高代码的可靠性和可维护性。以下是 TypeScript 中常用的类型语法。 联合类型（Union Types）联合类型是指可以包含多种类型之一的类型。在TypeScript中，可以使用”|”符号将多个类型组合在一起，形成联合类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ts">
+<meta property="og:url" content="http://example.com/2023/03/30/ts/index.html">
+<meta property="og:site_name" content="weeqe">
+<meta property="og:description" content="TypeScript类型常用语法总结TypeScript 是一种带有静态类型的 JavaScript 扩展，它为 JavaScript 提供了类型注释、类型推断等功能，从而提高代码的可靠性和可维护性。以下是 TypeScript 中常用的类型语法。 联合类型（Union Types）联合类型是指可以包含多种类型之一的类型。在TypeScript中，可以使用”|”符号将多个类型组合在一起，形成联合类">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-31T06:53:14.452Z">
+<meta property="article:author" content="weeqe">
+<meta property="article:tag" content="TypeScript">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>ts</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2023/06/11/react/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/03/29/hello-world/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/03/30/ts/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/03/30/ts/&text=ts"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/03/30/ts/&title=ts"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/03/30/ts/&is_video=false&description=ts"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ts&body=Check out this article: http://example.com/2023/03/30/ts/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/03/30/ts/&title=ts"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/03/30/ts/&title=ts"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/03/30/ts/&title=ts"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/03/30/ts/&title=ts"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/03/30/ts/&name=ts&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/03/30/ts/&t=ts"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TypeScript%E7%B1%BB%E5%9E%8B%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93"><span class="toc-number">1.</span> <span class="toc-text">TypeScript类型常用语法总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B%EF%BC%88Union-Types%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">联合类型（Union Types）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E7%B1%BB%E5%9E%8B%EF%BC%88Intersection-Types%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">交叉类型（Intersection Types）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D%EF%BC%88Type-Aliases%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">类型别名（Type Aliases）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E4%BF%9D%E6%8A%A4%EF%BC%88Type-Guards%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">类型保护（Type Guards）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%AD%BE%E5%90%8D"><span class="toc-number">1.5.</span> <span class="toc-text">索引签名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B"><span class="toc-number">1.6.</span> <span class="toc-text">泛型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#never"><span class="toc-number">1.7.</span> <span class="toc-text">never</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#infer"><span class="toc-number">1.8.</span> <span class="toc-text">infer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#typeof"><span class="toc-number">1.9.</span> <span class="toc-text">typeof</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keyof-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">1.10.</span> <span class="toc-text">keyof 运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#as-const"><span class="toc-number">1.11.</span> <span class="toc-text">as const</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.12.</span> <span class="toc-text">字符串类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84"><span class="toc-number">1.13.</span> <span class="toc-text">遍历数组</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        ts
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">weeqe</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-03-29T16:00:00.000Z" itemprop="datePublished">2023-03-30</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/TypeScript/" rel="tag">TypeScript</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="TypeScript类型常用语法总结"><a href="#TypeScript类型常用语法总结" class="headerlink" title="TypeScript类型常用语法总结"></a>TypeScript类型常用语法总结</h1><p>TypeScript 是一种带有静态类型的 JavaScript 扩展，它为 JavaScript 提供了类型注释、类型推断等功能，从而提高代码的可靠性和可维护性。以下是 TypeScript 中常用的类型语法。</p>
+<h2 id="联合类型（Union-Types）"><a href="#联合类型（Union-Types）" class="headerlink" title="联合类型（Union Types）"></a>联合类型（Union Types）</h2><p>联合类型是指可以包含多种类型之一的类型。在TypeScript中，可以使用”|”符号将多个类型组合在一起，形成联合类型</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">value</span>: <span class="built_in">string</span> | <span class="built_in">number</span>;</span><br><span class="line">value = <span class="string">&quot;hello&quot;</span>; <span class="comment">// 可以赋值为字符串类型</span></span><br><span class="line">value = <span class="number">42</span>; <span class="comment">// 可以赋值为数字类型</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="交叉类型（Intersection-Types）"><a href="#交叉类型（Intersection-Types）" class="headerlink" title="交叉类型（Intersection Types）"></a>交叉类型（Intersection Types）</h2><p>使用 &amp; 符号表示，用于将多个类型组合成一个类型。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> A &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> B &#123;</span><br><span class="line">  <span class="attr">b</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="variable constant_">AB</span> = A &amp; B;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">ab</span>: <span class="variable constant_">AB</span> = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="string">&quot;hello&quot;</span> &#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里定义了两个接口A和B，并用交叉类型&amp;合并它们为一个新的类型AB。然后我们定义了一个ab变量，它符合AB类型的定义，包含了a和b两个属性</p>
+<h2 id="类型别名（Type-Aliases）"><a href="#类型别名（Type-Aliases）" class="headerlink" title="类型别名（Type Aliases）"></a>类型别名（Type Aliases）</h2><p>类型别名可以给一个类型起一个新的名字，它有助于简化复杂类型的定义。它的语法是使用type关键字，例如：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Age</span> = <span class="built_in">number</span>;</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Person</span> = &#123; <span class="attr">name</span>: <span class="built_in">string</span>; <span class="attr">age</span>: <span class="title class_">Age</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">person</span>: <span class="title class_">Person</span> = &#123; <span class="attr">name</span>: <span class="string">&quot;Tom&quot;</span>, <span class="attr">age</span>: <span class="number">18</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这里定义了一个类型别名Age，它代表了一个数字类型。然后我们定义了一个类型别名Person，它包含了一个字符串类型的name属性和一个Age类型的age属性。最后我们定义了一个person变量，它符合Person类型的定义。</p>
+<h2 id="类型保护（Type-Guards）"><a href="#类型保护（Type-Guards）" class="headerlink" title="类型保护（Type Guards）"></a>类型保护（Type Guards）</h2><p>类型保护可以用来检测一个变量的类型，从而在不同的分支中使用不同的类型。它的语法有很多种，例如</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isString</span>(<span class="params">value: <span class="built_in">unknown</span></span>): value is <span class="built_in">string</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">typeof</span> value === <span class="string">&quot;string&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">printLength</span>(<span class="params">value: <span class="built_in">string</span> | <span class="built_in">number</span></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="title function_">isString</span>(value)) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(value.<span class="property">length</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;not a string&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="索引签名"><a href="#索引签名" class="headerlink" title="索引签名"></a>索引签名</h2><p>使用 [key: type] 表示一个对象可以使用任何键名，并且键名对应的值必须是特定类型</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Dictionary</span> &#123;</span><br><span class="line">  [<span class="attr">key</span>: <span class="built_in">string</span>]: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">dict</span>: <span class="title class_">Dictionary</span> = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>泛型是指在定义函数、类或接口时使用类型参数，使得这些定义可以适用于多种不同的类型。泛型可以帮助我们编写更加灵活和可重用的代码。</p>
+<p>泛型可以使用尖括号”&lt;&gt;”来声明类型参数，例如：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里的&lt;T&gt;表示类型参数，T可以替代任何类型。在调用这个函数时，可以通过传递不同的类型参数来获得不同的返回值。</span></span><br><span class="line"><span class="keyword">function</span> identity&lt;T&gt;(<span class="attr">arg</span>: T): T &#123;</span><br><span class="line">  <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>当一个联合类型被当做 泛型入参被传入的时候，则该联合类型会被拆解成一个个独立的类型，再进行其他的判断</p>
+<p>Never 用在联合类型时会被视为空 ‘a’ | never  =&gt; 会被收窄为 ‘a’  never 相当于是一个空的联合<br>T extends U ? X : Y当提供一个类型参数时，T = ‘A’ | ‘B’它被“分发”并解析为<br>(A extends U ? X : Y) | (B extends U ? X : Y)</p>
+<h2 id="never"><a href="#never" class="headerlink" title="never"></a>never</h2><p>用于表示函数的返回值，该函数永远不会返回任何值，或者会抛出一个异常</p>
+<p>never被认为是空的联合类型</p>
+<p>T extends never 当 T 为 never 永远不会起作用, 在类型分配的时候会忽略 never</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="variable constant_">T1</span>&lt;T&gt; = T <span class="keyword">extends</span> <span class="built_in">never</span> ? <span class="number">1</span> : <span class="number">2</span></span><br><span class="line"><span class="keyword">type</span> a = <span class="variable constant_">T1</span>&lt;<span class="built_in">never</span>&gt; <span class="comment">// 预期是 1 实际是 never</span></span><br></pre></td></tr></table></figure>
+
+<p>可以通过 [] 强制将类型入参当做一个整体，解除类型分配</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">UseNever1</span>&lt;T&gt; = [T] <span class="keyword">extends</span> [<span class="built_in">never</span>] ? <span class="number">1</span> : <span class="number">2</span></span><br><span class="line"><span class="keyword">type</span> b = <span class="title class_">UseNever1</span>&lt;<span class="built_in">never</span>&gt; <span class="comment">// b =&gt; 1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="infer"><a href="#infer" class="headerlink" title="infer"></a>infer</h2><p>条件类型中的类型推断 infer，可以用来提取类型中的某个部分。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">GetType</span>&lt;T&gt; = T <span class="keyword">extends</span> (infer P)[] ? P : <span class="built_in">never</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> isNumber = <span class="title class_">GetType</span>&lt;<span class="built_in">number</span>[]&gt; <span class="comment">// number</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><p>在 JavaScript 中 typeof 是用来判断数据类型<br>在 TypeScript 中 是在 类型上下文中<strong>获取变量或属性的类型</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;asdad&#x27;</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">DerivedFromStr</span> = <span class="keyword">typeof</span> str  <span class="comment">// string</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person = &#123;<span class="attr">name</span>: <span class="string">&#x27;das&#x27;</span>, <span class="attr">age</span>: <span class="number">12</span>&#125;</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Person</span> = <span class="keyword">typeof</span> person</span><br><span class="line"><span class="comment">// type Person = &#123;</span></span><br><span class="line"><span class="comment">//    name: string;</span></span><br><span class="line"><span class="comment">//    age: number;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="keyof-运算符"><a href="#keyof-运算符" class="headerlink" title="keyof 运算符"></a>keyof 运算符</h2><p>指的是把我们一个对象里面的 键值对里的键【key】 给罗列取出来，并把它们联合起来形成一种联合类型</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">    <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> K = keyof <span class="title class_">Person</span> <span class="comment">// name | age</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="as-const"><a href="#as-const" class="headerlink" title="as const"></a>as const</h2><p>as const断言，可以将代码中宽泛的数据类型定义具体化</p>
+<ul>
+<li>const 常量声明是 ES6 的语法，对 TS 而言，它只能反-映该常量本身是不可被重新赋值的，它的子属性仍然可以被修改，故 TS 只会对它们做松散的类型推断</li>
+<li>as const 是 TS 的语法，它告诉 TS 它所断言的值以及该值的所有层级的子属性都是不可篡改的，故对每一级子属性都会做最严格的类型推断</li>
+</ul>
+<p>注意，在使用as const之后，变量的值就变成了只读的，不可以被修改。</p>
+<h2 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> U = <span class="title class_">Uppercase</span>&lt;<span class="string">&#x27;Hello&#x27;</span>&gt; <span class="comment">// HELLO 全转大写</span></span><br><span class="line"><span class="keyword">type</span> <span class="variable constant_">U1</span> =  <span class="title class_">Lowercase</span>&lt;<span class="string">&#x27;Hello&#x27;</span>&gt; <span class="comment">// hello 全转小写</span></span><br><span class="line"><span class="keyword">type</span> <span class="variable constant_">U2</span> = <span class="title class_">Capitalize</span>&lt;<span class="string">&#x27;hello&#x27;</span>&gt; <span class="comment">// Helllo 首字母大写</span></span><br><span class="line"><span class="keyword">type</span> <span class="variable constant_">U3</span> = <span class="title class_">Uncapitalize</span>&lt;<span class="string">&#x27;Hello&#x27;</span>&gt; <span class="comment">// hello 首字母小写</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">P <span class="keyword">in</span> K[<span class="built_in">number</span>] <span class="comment">// P是数组的值</span></span><br><span class="line">P <span class="keyword">in</span> keyof K <span class="comment">// P是数组的下标</span></span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TypeScript%E7%B1%BB%E5%9E%8B%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93"><span class="toc-number">1.</span> <span class="toc-text">TypeScript类型常用语法总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B%EF%BC%88Union-Types%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">联合类型（Union Types）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E7%B1%BB%E5%9E%8B%EF%BC%88Intersection-Types%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">交叉类型（Intersection Types）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D%EF%BC%88Type-Aliases%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">类型别名（Type Aliases）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E4%BF%9D%E6%8A%A4%EF%BC%88Type-Guards%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">类型保护（Type Guards）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%AD%BE%E5%90%8D"><span class="toc-number">1.5.</span> <span class="toc-text">索引签名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B"><span class="toc-number">1.6.</span> <span class="toc-text">泛型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#never"><span class="toc-number">1.7.</span> <span class="toc-text">never</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#infer"><span class="toc-number">1.8.</span> <span class="toc-text">infer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#typeof"><span class="toc-number">1.9.</span> <span class="toc-text">typeof</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keyof-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">1.10.</span> <span class="toc-text">keyof 运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#as-const"><span class="toc-number">1.11.</span> <span class="toc-text">as const</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.12.</span> <span class="toc-text">字符串类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84"><span class="toc-number">1.13.</span> <span class="toc-text">遍历数组</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/03/30/ts/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/03/30/ts/&text=ts"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/03/30/ts/&title=ts"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/03/30/ts/&is_video=false&description=ts"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ts&body=Check out this article: http://example.com/2023/03/30/ts/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/03/30/ts/&title=ts"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/03/30/ts/&title=ts"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/03/30/ts/&title=ts"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/03/30/ts/&title=ts"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/03/30/ts/&name=ts&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/03/30/ts/&t=ts"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    weeqe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
